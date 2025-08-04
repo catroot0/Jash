@@ -9,7 +9,11 @@ public class CommandReader {
     while (true) {
       System.out.print("> ");
       String command = scanner.nextLine();
-      boolean isExit = HandleCommand.HandleExit(command);
+
+      boolean isValidCommand = CommandHandler.IsValidCommand(command);
+      if (!isValidCommand) CommandHandler.SendError(command);
+
+      boolean isExit = CommandHandler.HandleExit(command);
       
       if (isExit) break;
     }
