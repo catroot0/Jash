@@ -1,9 +1,6 @@
 package shell;
 
-import java.util.Arrays;
-
 public class CommandHandler {
-  private static String[] commands = {"exit", "clear", "help"};
 
   public static void HandleCommand(String command) {
     String clearedCommand = command.trim().toLowerCase();
@@ -17,17 +14,12 @@ public class CommandHandler {
       case "help":
           Help();
         break;
+      case "whoami":
+          WhoAmI();
+        break;
+      default:
+        System.out.println("Command '" + command + "' does not exist!");
     }
-  }
-
-  public static boolean Validate(String command) {
-    String clearedCommand = command.trim().toLowerCase();
-    boolean commandExist = Arrays.asList(commands).contains(clearedCommand);
-
-    if (commandExist)
-      return true;
-    else 
-      return false;
   }
 
   private static void Exit() {
@@ -53,7 +45,8 @@ public class CommandHandler {
     System.out.println("- clear: clears the shell.");
   }
 
-  public static void SendError(String commandName) {
-    System.out.format("Command \'%s\' does not exist!\n", commandName);
+  private static void WhoAmI() {
+    String userName = System.getProperty("user.name");
+    System.out.format("You are %s\n", userName);
   }
 }

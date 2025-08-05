@@ -10,9 +10,7 @@ public class CommandReader {
       System.out.print("> ");
       String command = scanner.nextLine();
       if (command.trim().isEmpty()) continue;
-
-      boolean isValidCommand = CommandHandler.Validate(command);
-      if (!isValidCommand) CommandHandler.SendError(command);
+      
       CommandHandler.HandleCommand(command);
     }
   }
