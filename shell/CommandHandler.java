@@ -3,15 +3,19 @@ package shell;
 import java.util.Arrays;
 
 public class CommandHandler {
-  private static String[] commands = {"exit", "clear"};
+  private static String[] commands = {"exit", "clear", "help"};
 
   public static void HandleCommand(String command) {
-    switch (command) {
+    String clearedCommand = command.trim().toLowerCase();
+    switch (clearedCommand) {
       case "exit":
           Exit();
         break;
       case "clear":
           Clear();
+        break;
+      case "help":
+          Help();
         break;
     }
   }
@@ -29,7 +33,7 @@ public class CommandHandler {
   private static void Exit() {
     System.exit(0);
   }
-
+  
   private static void Clear() {
     try {
       if (System.getProperty("os.name").startsWith("Windows")) {
@@ -40,6 +44,13 @@ public class CommandHandler {
     } catch (Exception error) {
       System.err.println(error);
     }
+  }
+
+  private static void Help() {
+    System.out.println("Available commands:");
+    System.out.println("- help: shows the available commands.");
+    System.out.println("- exit: exits the shell.");
+    System.out.println("- clear: clears the shell.");
   }
 
   public static void SendError(String commandName) {
