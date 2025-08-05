@@ -11,12 +11,9 @@ public class CommandReader {
       String command = scanner.nextLine();
       if (command.trim().isEmpty()) continue;
 
-      boolean isValidCommand = CommandHandler.IsValidCommand(command);
+      boolean isValidCommand = CommandHandler.Validate(command);
       if (!isValidCommand) CommandHandler.SendError(command);
-
-      boolean isExit = CommandHandler.HandleExit(command);
-
-      if (isExit) break;
+      CommandHandler.HandleCommand(command);
     }
   }
 }
