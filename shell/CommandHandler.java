@@ -43,6 +43,7 @@ public class CommandHandler {
     System.out.println("- help: shows the available commands.");
     System.out.println("- exit: exits the shell.");
     System.out.println("- clear: clears the shell.");
+    System.out.println("- whoami: tell you the name of the user you are currently using.");
   }
 
   private static void WhoAmI() {
